@@ -130,9 +130,8 @@ Access Model: Role-Based Authentication
 
 ## 📂 Repository Structure
 ifsp-project-management-system/
-│
-├── screenshots/ # Application UI screenshots
-├── Internally_Funded_Student_Project_Management.ds # Zoho Creator export file
+├── screenshots/
+├── Internally_Funded_Student_Project_Management.ds
 ├── README.md
 └── LICENSE
 
