@@ -169,6 +169,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Developed By
 
-Sivasarathy  
-B.E Computer Science Engineering  
+Sivasarathy A
+II YEAR
+B.E Computer Science and Engineering  
 SSN College of Engineering
