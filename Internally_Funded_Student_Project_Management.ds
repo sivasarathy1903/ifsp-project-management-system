@@ -1,0 +1,2927 @@
+/*
+ * Author       : sivasarathy2410583_ssn
+ * Generated on : 01-Mar-2026 17:55:15
+ * Version      : 1.0
+ */
+ application "Internally Funded Student Project Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form budget_breakdown
+		{
+			displayname = "Budget Breakdown"
+			success message = "Budget Breakdown Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = projects.ID
+    			displayformat = [project_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			component_name
+			(
+    			type = text
+				displayname = "Component Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			quantity
+			(
+				type = number
+				displayname = "Quantity"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			cost_per_unit
+			(
+				displayname = "Cost Per Unit"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_cost
+			(
+				displayname = "Total Cost"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Budget Entry Created","Cost Validation Pending","Budget Draft Saved","Cost Validation Failed","Cost Validation Passed","Budget Approval Requested","Budget Approved","Budget Rejected","Budget Tracking Active","Budget Exceeded Alert","Budget Fully Utilized","Budget Closed"}
+			}
+		}
+		form milestones
+		{
+			displayname = "Milestones"
+			success message = "Milestone Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = projects.ID
+    			displayformat = [project_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			milestone_name
+			(
+    			type = text
+				displayname = "Milestone Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			deadline
+			(
+    			type = date
+				displayname = "Deadline"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			completion_status
+			(
+				type = picklist
+				displayname = "Completion Status"
+				values = {"Not Started","Completed","In Progress"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			progress_percentage
+			(
+    			type = percentage
+				displayname = "Progress Percentage"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form project_risk
+		{
+			displayname = "Project Risk"
+			success message = "Project Risk Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = projects.ID
+    			displayformat = [project_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			risk_level
+			(
+				type = picklist
+				displayname = "Risk Level"
+				values = {"High","Low","Medium"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			risk_score
+			(
+				type = decimal
+				displayname = "Risk Score"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			risk_assessment_date
+			(
+    			type = date
+				displayname = "Risk Assessment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form project_sentiment
+		{
+			displayname = "Project Sentiment"
+			success message = "Project Sentiment Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project
+			(
+				type = list	
+				displayname = "Project"
+				values  = projects.ID
+    			displayformat = [project_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			abstract_sentiment
+			(
+				type = picklist
+				displayname = "Abstract Sentiment"
+				values = {"Very Positive","Neutral","Negative","Positive","Very Negative"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sentiment_confidence
+			(
+    			type = percentage
+				displayname = "Sentiment Confidence"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			analysis_date
+			(
+    			type = date
+				displayname = "Analysis Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form projects
+		{
+			displayname = "Projects"
+			success message = "Project Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			project_id
+			(
+    			type = autonumber
+				displayname = "Project ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			title
+			(
+    			type = text
+				displayname = "Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			abstract
+			(
+    			type = textarea
+				displayname = "Abstract"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			problem_statement
+			(
+    			type = textarea
+				displayname = "Problem Statement"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			guide_name
+			(
+    			type = text
+				displayname = "Guide Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			team_members
+			(
+    			type = text
+				displayname = "Team Members"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			estimated_budget
+			(
+				displayname = "Estimated Budget"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_duration
+			(
+				type = number
+				displayname = "Project Duration"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Submitted","Under Review","Approved","Rejected"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			submission_date
+			(
+    			type = date
+				displayname = "Submission Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			predicted_success_probability
+			(
+    			type = percentage
+				displayname = "Predicted Success Probability"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			sentiment_score
+			(
+				type = decimal
+				displayname = "Sentiment Score"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reviewer
+			(
+    			type = text
+				displayname = "Reviewer"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			admin
+			(
+    			type = text
+				displayname = "Admin"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Project Submitted","Under Review","Rejected","Revisions Requested","Approved","In Progress","On Hold","Completed","Final Review","Approved Final","Closed"}
+			}
+		}
+		form users
+		{
+			displayname = "Users"
+			success message = "User Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			name
+			(
+    			type = name
+				displayname = "Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			role
+			(
+				type = picklist
+				displayname = "Role"
+				values = {"Student","Admin","Reviewer"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			department
+			(
+    			type = text
+				displayname = "Department"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_login
+			(
+    			type = datetime
+				displayname = "Last Login"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list budget_breakdown_Report
+		{
+			displayName = "All Budget Breakdowns"
+			show all rows from budget_breakdown    
+			(
+				project as "Project"
+				component_name as "Component Name"
+				quantity as "Quantity"
+				cost_per_unit as "Cost Per Unit"
+				(
+					display = total,average,min,max	
+				)
+				total_cost as "Total Cost"
+				(
+					display = total,average,min,max	
+				)
+			)
+		}
+		list project_sentiment_Report
+		{
+			displayName = "All Project Sentiments"
+			show all rows from project_sentiment    
+			(
+				project as "Project"
+				abstract_sentiment as "Abstract Sentiment"
+				sentiment_confidence as "Sentiment Confidence"
+				(
+					display = total,average,min,max	
+				)
+				analysis_date as "Analysis Date"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (abstract_sentiment == "Negative")
+				fields = [abstract_sentiment]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (abstract_sentiment == "Positive")
+				fields = [abstract_sentiment]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (abstract_sentiment == "Very Positive")
+				fields = [abstract_sentiment]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban project_sentiment_by_abstract_sentiment
+		{
+			displayName = "Abstract Sentiments"
+			show all rows from project_sentiment    
+			(
+				project as "Project"
+				abstract_sentiment as "Abstract Sentiment"
+				sentiment_confidence as "Sentiment Confidence"
+				(
+					display = total,average,min,max	
+				)
+				analysis_date as "Analysis Date"
+			)
+			options
+			(
+	 			display field = abstract_sentiment
+	 		)
+		}
+		list milestones_Report
+		{
+			displayName = "All Milestones"
+			show all rows from milestones    
+			(
+				project as "Project"
+				milestone_name as "Milestone Name"
+				deadline as "Deadline"
+				completion_status as "Completion Status"
+				progress_percentage as "Progress Percentage"
+				(
+					display = total,average,min,max	
+				)
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (completion_status == "Completed")
+				fields = [completion_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (completion_status == "In Progress")
+				fields = [completion_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (completion_status == "Not Started")
+				fields = [completion_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban milestones_by_completion_status
+		{
+			displayName = "Completion Statuses"
+			show all rows from milestones    
+			(
+				project as "Project"
+				milestone_name as "Milestone Name"
+				deadline as "Deadline"
+				completion_status as "Completion Status"
+				progress_percentage as "Progress Percentage"
+				(
+					display = total,average,min,max	
+				)
+			)
+			options
+			(
+	 			display field = completion_status
+	 		)
+		}
+		list projects_Report
+		{
+			displayName = "All Projects"
+			show all rows from projects    
+			(
+				project_id as "Project ID"
+				title as "Title"
+				abstract as "Abstract"
+				problem_statement as "Problem Statement"
+				guide_name as "Guide Name"
+				team_members as "Team Members"
+				estimated_budget as "Estimated Budget"
+				(
+					display = total,average,min,max	
+				)
+				project_duration as "Project Duration"
+				status as "Status"
+				submission_date as "Submission Date"
+				predicted_success_probability as "Predicted Success Probability"
+				(
+					display = total,average,min,max	
+				)
+				sentiment_score as "Sentiment Score"
+				reviewer as "Reviewer"
+				admin as "Admin"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Rejected")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Submitted")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (status == "Under Review")
+				fields = [status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban projects_by_status
+		{
+			displayName = "Statuses"
+			show all rows from projects    
+			(
+				project_id as "Project ID"
+				title as "Title"
+				abstract as "Abstract"
+				problem_statement as "Problem Statement"
+				guide_name as "Guide Name"
+				team_members as "Team Members"
+				estimated_budget as "Estimated Budget"
+				(
+					display = total,average,min,max	
+				)
+				project_duration as "Project Duration"
+				status as "Status"
+				submission_date as "Submission Date"
+				predicted_success_probability as "Predicted Success Probability"
+				(
+					display = total,average,min,max	
+				)
+				sentiment_score as "Sentiment Score"
+				reviewer as "Reviewer"
+				admin as "Admin"
+			)
+			options
+			(
+	 			display field = status
+	 		)
+		}
+		list project_risk_Report
+		{
+			displayName = "All Project Risks"
+			show all rows from project_risk    
+			(
+				project as "Project"
+				risk_level as "Risk Level"
+				risk_score as "Risk Score"
+				risk_assessment_date as "Risk Assessment Date"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (risk_level == "High")
+				fields = [risk_level]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (risk_level == "Low")
+				fields = [risk_level]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban project_risk_by_risk_level
+		{
+			displayName = "Risk Levels"
+			show all rows from project_risk    
+			(
+				project as "Project"
+				risk_level as "Risk Level"
+				risk_score as "Risk Score"
+				risk_assessment_date as "Risk Assessment Date"
+			)
+			options
+			(
+	 			display field = risk_level
+	 		)
+		}
+		list users_Report
+		{
+			displayName = "All Users"
+			show all rows from users    
+			(
+				name  as "Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				email as "Email"
+				role as "Role"
+				department as "Department"
+				phone as "Phone"
+				last_login as "Last Login"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (role == "Admin")
+				fields = [role]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (role == "Reviewer")
+				fields = [role]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (role == "Student")
+				fields = [role]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban users_by_role
+		{
+			displayName = "Roles"
+			show all rows from users    
+			(
+				name  as "Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				email as "Email"
+				role as "Role"
+				department as "Department"
+				phone as "Phone"
+				last_login as "Last Login"
+			)
+			options
+			(
+	 			display field = role
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.budget_breakdown.cost_per_unit.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Cost Per Unit'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-cash-register'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.budget_breakdown.total_cost.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Total Costs'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-cash-register'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.project_sentiment.sentiment_confidence.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Average Sentiment Confidence'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-stock'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.milestones.progress_percentage.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Average Progress Percentages'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-39'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Completion Statuses'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-2-cursor-not-allowed'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'completion_status == &quot;Not Started&quot;'\n\t  value = 'thisapp.milestones.completion_status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Not Started'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-todo'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'completion_status == &quot;Completed&quot;'\n\t  value = 'thisapp.milestones.completion_status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Completed'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'loader-refresh'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'completion_status == &quot;In Progress&quot;'\n\t  value = 'thisapp.milestones.completion_status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'In Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.milestones.completion_status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'budget_breakdown'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Budget Breakdown'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'project_sentiment'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Project Sentiment'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'milestones'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Milestones'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'projects'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Projects'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Total Cost by Cost Per Unit'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Scatter'\n\txtitle = 'Total Cost'\n\tytitle = 'Cost Per Unit'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = '#f37d16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'budget_breakdown'\n\txfield = 'total_cost'\n\tyfields = 'value:cost_per_unit'\n\t\tDelugeCriteria = 'total_cost is not null'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Completion Status by Progress Percentage'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Completion Status'\n\tytitle = 'Progress Percentage'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'milestones'\n\txfield = 'completion_status'\n\tyfields = 'sum:progress_percentage'\n\t\tDelugeCriteria = 'completion_status is not null &amp;&amp; completion_status != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'budget_breakdown_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			project_submission_and_review_process as "Project Submission and Review Process"
+    			{
+        			type = Blueprint
+        			form = projects
+        			start
+        			{
+            			start stage = "Project Submitted"
+        			}
+        			stages
+        			{
+           			"Project Submitted"
+           			{
+           			}
+           			"Under Review"
+           			{
+           			}
+           			"Rejected"
+           			{
+           			}
+           			"Revisions Requested"
+           			{
+           			}
+           			"Approved"
+           			{
+           			}
+           			"In Progress"
+           			{
+           			}
+           			"On Hold"
+           			{
+           			}
+           			"Completed"
+           			{
+           			}
+           			"Final Review"
+           			{
+           			}
+           			"Approved Final"
+           			{
+           			}
+           			"Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_final as "Approve Final Submission"
+    				{
+         				type = normal
+         				from stage = "Final Review"
+         				to stage = "Approved Final"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				approve_project as "Approve Project"
+    				{
+         				type = normal
+         				from stage = "Under Review"
+         				to stage = "Approved"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				assign_to_reviewer as "Assign to Reviewer"
+    				{
+         				type = normal
+         				from stage = "Project Submitted"
+         				to stage = "Under Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_on_hold as "Close Project as On Hold"
+    				{
+         				type = normal
+         				from stage = "On Hold"
+         				to stage = "Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_project as "Close Project"
+    				{
+         				type = normal
+         				from stage = "Approved Final"
+         				to stage = "Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_project as "Mark Project as Completed"
+    				{
+         				type = normal
+         				from stage = "In Progress"
+         				to stage = "Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				initiate_final_review as "Initiate Final Review"
+    				{
+         				type = normal
+         				from stage = "Completed"
+         				to stage = "Final Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_project as "Pause Project"
+    				{
+         				type = normal
+         				from stage = "Approved"
+         				to stage = "On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_after_revisions as "Reject After Revisions"
+    				{
+         				type = normal
+         				from stage = "Revisions Requested"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_completed as "Reject Completed Project"
+    				{
+         				type = normal
+         				from stage = "Completed"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_during_execution as "Reject During Execution"
+    				{
+         				type = normal
+         				from stage = "In Progress"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_project as "Reject Project"
+    				{
+         				type = normal
+         				from stage = "Project Submitted"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_final_revisions as "Request Final Revisions"
+    				{
+         				type = normal
+         				from stage = "Final Review"
+         				to stage = "Revisions Requested"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_revisions as "Request Revisions"
+    				{
+         				type = normal
+         				from stage = "Under Review"
+         				to stage = "Revisions Requested"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resubmit_with_revisions as "Resubmit with Revisions"
+    				{
+         				type = normal
+         				from stage = "Revisions Requested"
+         				to stage = "Under Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_project as "Resume Project"
+    				{
+         				type = normal
+         				from stage = "On Hold"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_project as "Start Project Execution"
+    				{
+         				type = normal
+         				from stage = "Approved"
+         				to stage = "In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				terminate_project as "Terminate Project"
+    				{
+         				type = normal
+         				from stage = "On Hold"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Risk & Sentiment Analyst"
+			{
+				name = "Risk & Sentiment Analyst"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Conduct automated sentiment analysis on project abstracts and feedback \n"
+				ModulePermissions
+				{
+					project_sentiment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_sentiment_Report={"View","Edit","Delete"}
+							project_sentiment_by_abstract_sentiment={"View","Edit","Delete"}
+						}
+					}
+					project_risk
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_risk_by_risk_level={"View","Edit","Delete"}
+							project_risk_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Budget Analyst"
+			{
+				name = "Budget Analyst"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review and validate budget breakdowns for accuracy and合理性 \n"
+				ModulePermissions
+				{
+					budget_breakdown
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							budget_breakdown_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Project Admin"
+			{
+				name = "Project Admin"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee the entire project lifecycle from submission to completion \n"
+				ModulePermissions
+				{
+					budget_breakdown
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							budget_breakdown_Report={"View","Edit","Delete"}
+						}
+					}
+					projects
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							projects_Report={"View","Edit","Delete"}
+							projects_by_status={"View","Edit","Delete"}
+						}
+					}
+					project_sentiment
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_sentiment_Report={"View","Edit","Delete"}
+							project_sentiment_by_abstract_sentiment={"View","Edit","Delete"}
+						}
+					}
+					project_risk
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_risk_by_risk_level={"View","Edit","Delete"}
+							project_risk_Report={"View","Edit","Delete"}
+						}
+					}
+					milestones
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestones_Report={"View","Edit","Delete"}
+							milestones_by_completion_status={"View","Edit","Delete"}
+						}
+					}
+					users
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							users_Report={"View"}
+							users_by_role={"View"}
+						}
+					}
+				}
+			}
+			"Reviewer"
+			{
+				name = "Reviewer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Evaluate project submissions based on criteria such as feasibility and innovation \n"
+				ModulePermissions
+				{
+					project_sentiment
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_sentiment_Report={"View","Edit"}
+							project_sentiment_by_abstract_sentiment={"View","Edit"}
+						}
+					}
+					project_risk
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_risk_by_risk_level={"View","Edit"}
+							project_risk_Report={"View","Edit"}
+						}
+					}
+					projects
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							projects_Report={"View","Edit"}
+							projects_by_status={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Student"
+			{
+				name = "Student"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Submit project proposals with abstracts, problem statements, and team details \n"
+				ModulePermissions
+				{
+					project_sentiment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_sentiment_Report={"View"}
+							project_sentiment_by_abstract_sentiment={"View"}
+						}
+					}
+					project_risk
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_risk_by_risk_level={"View"}
+							project_risk_Report={"View"}
+						}
+					}
+					projects
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							projects_Report={"View","Edit"}
+							projects_by_status={"View","Edit"}
+						}
+					}
+					milestones
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestones_Report={"View","Edit"}
+							milestones_by_completion_status={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			"Academic Guide"
+			{
+				name = "Academic Guide"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Support student teams in developing project proposals and refining problem statements \n"
+				ModulePermissions
+				{
+					budget_breakdown
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							budget_breakdown_Report={"View"}
+						}
+					}
+					project_sentiment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_sentiment_Report={"View"}
+							project_sentiment_by_abstract_sentiment={"View"}
+						}
+					}
+					project_risk
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							project_risk_by_risk_level={"View"}
+							project_risk_Report={"View"}
+						}
+					}
+					projects
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							projects_Report={"View","Edit"}
+							projects_by_status={"View","Edit"}
+						}
+					}
+					milestones
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							milestones_Report={"View","Edit"}
+							milestones_by_completion_status={"View","Edit"}
+						}
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form budget_breakdown
+			{
+				label placement = left
+			}
+			form milestones
+			{
+				label placement = left
+			}
+			form project_risk
+			{
+				label placement = left
+			}
+			form project_sentiment
+			{
+				label placement = left
+			}
+			form projects
+			{
+				label placement = left
+			}
+			form users
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report budget_breakdown_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								project as "Project"
+								component_name as "Component Name"
+								quantity as "Quantity"
+								cost_per_unit as "Cost Per Unit"
+								total_cost as "Total Cost"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								component_name as "Component Name"
+								quantity as "Quantity"
+								cost_per_unit as "Cost Per Unit"
+								total_cost as "Total Cost"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report project_sentiment_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								project as "Project"
+								abstract_sentiment as "Abstract Sentiment"
+								sentiment_confidence as "Sentiment Confidence"
+								analysis_date as "Analysis Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								abstract_sentiment as "Abstract Sentiment"
+								sentiment_confidence as "Sentiment Confidence"
+								analysis_date as "Analysis Date"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report project_sentiment_by_abstract_sentiment
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								project as "Project"
+								sentiment_confidence as "Sentiment Confidence"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								project as "Project"
+								abstract_sentiment as "Abstract Sentiment"
+								sentiment_confidence as "Sentiment Confidence"
+								analysis_date as "Analysis Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report milestones_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								project as "Project"
+								milestone_name as "Milestone Name"
+								deadline as "Deadline"
+								completion_status as "Completion Status"
+								progress_percentage as "Progress Percentage"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								milestone_name as "Milestone Name"
+								deadline as "Deadline"
+								completion_status as "Completion Status"
+								progress_percentage as "Progress Percentage"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report milestones_by_completion_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								milestone_name as "Milestone Name"
+								project as "Project"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								project as "Project"
+								milestone_name as "Milestone Name"
+								deadline as "Deadline"
+								completion_status as "Completion Status"
+								progress_percentage as "Progress Percentage"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report projects_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report projects_by_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								title as "Title"
+								guide_name as "Guide Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report project_risk_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								project as "Project"
+								risk_level as "Risk Level"
+								risk_score as "Risk Score"
+								risk_assessment_date as "Risk Assessment Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								project as "Project"
+								risk_level as "Risk Level"
+								risk_score as "Risk Score"
+								risk_assessment_date as "Risk Assessment Date"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Project"
+		     				related field = project
+							fields
+							(
+								project_id as "Project ID"
+								title as "Title"
+								abstract as "Abstract"
+								problem_statement as "Problem Statement"
+								guide_name as "Guide Name"
+								team_members as "Team Members"
+								estimated_budget as "Estimated Budget"
+								project_duration as "Project Duration"
+								status as "Status"
+								submission_date as "Submission Date"
+								predicted_success_probability as "Predicted Success Probability"
+								sentiment_score as "Sentiment Score"
+								reviewer as "Reviewer"
+								admin as "Admin"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report project_risk_by_risk_level
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								project as "Project"
+								risk_score as "Risk Score"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								project as "Project"
+								risk_level as "Risk Level"
+								risk_score as "Risk Score"
+								risk_assessment_date as "Risk Assessment Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report users_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								name as "Name"
+								email as "Email"
+								role as "Role"
+								department as "Department"
+								phone as "Phone"
+								last_login as "Last Login"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								name as "Name"
+								email as "Email"
+								role as "Role"
+								department as "Department"
+								phone as "Phone"
+								last_login as "Last Login"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report users_by_role
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								name as "Name"
+								department as "Department"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								name as "Name"
+								email as "Email"
+								role as "Role"
+								department as "Department"
+								phone as "Phone"
+								last_login as "Last Login"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Budget Breakdowns"
+					icon = "shopping-cash-register"
+					form  budget_breakdown
+					{
+						icon = "ui-1-bold-add"
+					}
+					report budget_breakdown_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Project Sentiments"
+					icon = "education-books-46"
+					form  project_sentiment
+					{
+						icon = "ui-1-bold-add"
+					}
+					report project_sentiment_Report
+					{
+						icon = "travel-world"
+					}
+					report project_sentiment_by_abstract_sentiment
+					{
+						icon = "business-bulb-63"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Milestones"
+					icon = "tech-desktop"
+					form  milestones
+					{
+						icon = "ui-1-bold-add"
+					}
+					report milestones_Report
+					{
+						icon = "travel-world"
+					}
+					report milestones_by_completion_status
+					{
+						icon = "design-todo"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Projects"
+					icon = "education-books-46"
+					form  projects
+					{
+						icon = "ui-1-bold-add"
+					}
+					report projects_Report
+					{
+						icon = "travel-world"
+					}
+					report projects_by_status
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Project Risks"
+					icon = "education-books-46"
+					form  project_risk
+					{
+						icon = "ui-1-bold-add"
+					}
+					report project_risk_Report
+					{
+						icon = "sport-cardio"
+					}
+					report project_risk_by_risk_level
+					{
+						icon = "sport-user-balance"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Users"
+					icon = "users-2-woman"
+					form  users
+					{
+						icon = "ui-1-bold-add"
+					}
+					report users_Report
+					{
+						icon = "users-2-woman"
+					}
+					report users_by_role
+					{
+						icon = "media-1-play-69"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "3"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form budget_breakdown
+			{
+				label placement = auto
+			}
+			form milestones
+			{
+				label placement = auto
+			}
+			form project_risk
+			{
+				label placement = auto
+			}
+			form project_sentiment
+			{
+				label placement = auto
+			}
+			form projects
+			{
+				label placement = auto
+			}
+			form users
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form budget_breakdown
+			{
+				label placement = auto
+			}
+			form milestones
+			{
+				label placement = auto
+			}
+			form project_risk
+			{
+				label placement = auto
+			}
+			form project_sentiment
+			{
+				label placement = auto
+			}
+			form projects
+			{
+				label placement = auto
+			}
+			form users
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
